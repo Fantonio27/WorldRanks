@@ -1,0 +1,170 @@
+@import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Color Palette*/
+$black: #1B1D1F;
+$lightBlack: #282B30;
+$blue: #4E80EE;
+$gray: #6C727F;
+$mediumGray: #D2D5DA;
+$lightGray: #292b31;
+
+@mixin flex($gap: 10px, $justify: center, $align : center){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+body{
+    background-color: $black;
+    color: $mediumGray;
+}
+
+h2,h3,li{
+    color: $gray;
+    list-style-type: none;
+}
+
+header{
+    background-image: url("./assets/hero-image-wr.jpg");
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-color: black;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstContainer{
+    width: 95%;
+    margin: auto;
+    padding: 30px;
+    bottom:60px;
+    position: relative;
+    background-color: $black;
+    border: 1px solid $lightBlack;
+    border-radius: 15px;
+
+    li, h3{
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .searchTab{
+        @include flex(0px, space-between);
+        flex-wrap: wrap;
+
+        h2{
+            font-size: 16px;
+            font-weight: 600
+        }
+
+        .inputContainer{
+            @include flex(0px);
+            background-color: $lightGray;
+            border-radius: 12px;
+            width: 350px;
+            padding: 5px 10px;
+
+            input[type=text]{
+                background-color: transparent;
+                border: 0px;
+                color: $mediumGray;
+
+                &::placeholder{
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $gray;
+                }
+
+                &:focus{
+                    box-shadow: none;
+                }
+            }  
+        }
+    }
+
+    .boxContainer{
+        @include flex(20px, space-between);
+        
+        .sidebar{
+            @include flex(30px, flex-start, flex-start);
+            flex-direction: column;
+            width: 23%;
+            $fontSize: 14px;
+
+            >div{
+                width: 100%;
+            }
+
+            .btn-check{
+                color: $gray;
+                border-radius: 12px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .btn{
+                color: $gray;
+                font-size: $fontSize;
+                font-weight: 600;
+                border: none;
+            }
+            
+            input[type=checkbox]:checked ~ .btn{
+                background-color: $lightGray;
+                color: $mediumGray;
+            }
+
+            .form-select{
+                background-color: transparent;
+                border-radius: 10px;
+                border: 2px solid $lightGray;
+                color: $mediumGray;
+                font-size: $fontSize;
+            }
+
+            .regionContainer{
+                @include flex(10px, flex-start);
+                flex-wrap: wrap;
+            }
+
+            .form-check{
+                margin-bottom: 10px;
+                .form-check-input{
+                    position: relative;
+                    bottom: 4px;
+                    height: 25px;
+                    width: 25px;
+                    background-color: transparent;
+                    border: 2px solid $gray;
+    
+                    &:checked{
+                        background-color: $blue;
+                        border: 2px solid $blue;
+                    }
+                }
+
+                .form-check-label{
+                    font-size: $fontSize;
+                    font-weight: 500;
+                    margin-left: 10px;
+                }
+
+            }
+        }
+
+        .tableContainer{
+            width: 77%;
+        }
+    }
+}
