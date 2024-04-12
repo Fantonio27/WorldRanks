@@ -2,11 +2,14 @@
     import SearchTab from './SearchTab.vue';
     import Sidebar from './Sidebar.vue';
     import Table from './Table.vue';
+
+    defineProps(['data'])
 </script>
 
 <template>
     <main class="firstContainer">
-        <SearchTab />
+        {{data}}
+        <SearchTab :prop="data"/>
 
         <div class="boxContainer">
             <Sidebar />

@@ -5,7 +5,7 @@
 
 <template>
     <div class="tableContainer">
-        <table class="table">
+        <table class="table table-dark table-borderless" >
             <thead>
                 <tr>
                     <th scope="col">Flag</th>
@@ -17,21 +17,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <td>1</td>
                     <td>China</td>
                     <td>1,402,112,000</td>
                     <td>9,706,961</td>
                     <td>Asia</td>
                 </tr>
                 <tr>
-                    <th scope="row">1</th>
+                    <td>1</td>
                     <td>China</td>
                     <td>1,402,112,000</td>
                     <td>9,706,961</td>
                     <td>Asia</td>
                 </tr>
                 <tr>
-                    <th scope="row">1</th>
+                    <td>1</td>
                     <td>China</td>
                     <td>1,402,112,000</td>
                     <td>9,706,961</td>
