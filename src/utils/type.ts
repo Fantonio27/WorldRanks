@@ -10,6 +10,7 @@ export interface Country {
     area:       number;
     population: number;
     continents: string[];
+    unMember: boolean
 }
 
 export interface Currency {
@@ -44,4 +45,23 @@ export interface NativeName {
 export interface Eng {
     official: string;
     common:   string;
+}
+
+export type Params = {
+    country?: string,
+    search?: string,
+    continent?: string,
+    status?: string,
+    page?: number,
+}
+
+export type FilterProperties = {
+    page: number,
+    sort: string,
+    region: string[],
+    status: {
+        unmember: boolean,
+        independent: boolean,
+    },
+    search: string
 }

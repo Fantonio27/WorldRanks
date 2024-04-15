@@ -16,7 +16,6 @@ let nu = ref(1);
 
 <template>
   <div class="paginationContainer">
-    {{nu}}
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" @click="nu--">Previous</a></li>
