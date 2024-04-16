@@ -14,8 +14,7 @@
       const data = await response.json()
 
       let filtered = WorldLists(page, data)
-      setTimeout(()=> {      dataform.value = filtered;}, 1000)
-
+      setTimeout(()=> {dataform.value = filtered;}, 1000)
   })
 
 </script>
@@ -24,8 +23,7 @@
   <header>
       <img :src="Logo" alt="logo">
   </header>
-  <!-- <Homepage :data="dataform"/> -->
-  <component :is="!page? Homepage :  CountryPage" :data="dataform" />
+  <component :is="!page? Homepage :  CountryPage" :data="dataform"/>
 </template>
 
 

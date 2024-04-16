@@ -59,7 +59,9 @@ export type FilterProperties = {
     page: number,
     sort: string,
     region: string[],
-    status: {
+    status: 
+
+    {
         unmember: boolean,
         independent: boolean,
     },

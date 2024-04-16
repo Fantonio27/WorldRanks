@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineProps} from "vue";
 // const props = defineProps(['qNo'])
-
+const pageNumber = defineProps<{pageNo : number}>()
 // const array = [1, 2, 3];
 // // let numbers = array.map((n) => n * 1);
 // // console.log(numbers);
@@ -12,6 +12,7 @@ let nu = ref(1);
 // const pageNo = computed((n)=>{
 //   return nu.value > 3 ? n + (nu.value - 1) : n 
 //   })
+
 </script>
 
 <template>
@@ -20,14 +21,11 @@ let nu = ref(1);
       <ul class="pagination">
         <li class="page-item"><a class="page-link" @click="nu--">Previous</a></li>
         <li v-for="n in 3" class="page-item">
-          <a :class="`page-link ${n == nu && 'active'}`">{{n}}</a>
+          <a :class="`page-link ${n == pageNumber.pageNo && 'active'}`">{{n}}</a>
         </li>
         <li class="page-item" @click="nu++">
           <a class="page-link">Next</a>
         </li>
-        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
       </ul>
     </nav>
   </div>

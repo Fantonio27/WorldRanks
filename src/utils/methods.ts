@@ -11,28 +11,33 @@ export function GetAllParams () {
 };
 
 export function WorldLists (country: string | null, dataform: Country[]){
-    return country != null?dataform.filter((val: Country)=> val.name.common == "Philippines") : dataform.slice(0,11) 
+    return country != null?dataform.filter((val: Country)=> val.name.common == "Philippines") : dataform.slice(0,21) 
 } 
 
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
     const {page, sort, region, status, search} = filterProperties;
 
-    const searchFilter = FilterFunction(props, 1, search);
-    // const regionFilter = FilterFunction(props, "region", region);
+    const pages = FilterFunction(props, 0, page);
+    const searchFilter = FilterFunction(pages, 1, search);
     const regionFilter = FilterFunction(searchFilter, 2, region);
 
-    // const statusFilter = regionFilter.filter(prop => prop.unMember == true)
+    // const statusFilter = FilterFunction(searchFilter, 3, status);
     
     // const sortBy = statusFilter.sort((x,y)=> x.population - y.population)
     return regionFilter
 }
-
-function FilterFunction (props : Country[], key:number , value: string[] | string | boolean) {
+// (typeof(value) == "boolean" || value) || 
+function FilterFunction (props : Country[], key:number , value: string[] | string | number) {
     const newKey: number = (<string[] | string>value).length != 0? key : 5;
 
     switch(newKey){
+        case 0:
+            let end = Number(value) * 10;
+            let start = end - 10;
+           
+            return props.slice(start, end)
         case 1:
-            return props.filter((prop) => prop.name.common == value)
+            return props.filter((prop) => prop.name.common.startsWith(value as string))
         case 2:
             return props.filter((prop)=> {
                 for(let val of value as string){
@@ -42,9 +47,10 @@ function FilterFunction (props : Country[], key:number , value: string[] | strin
                 }
             })
         case 3:
-            
+
+            // return props.filter((prop) => prop.unMember == value)
         case 4:
-            
+
         default:
             return props;
     }

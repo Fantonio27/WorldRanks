@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { continents } from "../utils/datasets"
+import { continents, sortBy} from "../utils/datasets";
+import { defineModel} from "vue";
+
+defineModel('properties');
+
 </script>
 
 <template>
   <div class="sidebar">
     <div>
       <h3>Sort by</h3>
-      <select class="form-select" aria-label="Default select example">
-        <option value="Population">Population</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <select class="form-select" aria-label="Default select example" v-model="properties.sort">
+        <option v-for="(value) in sortBy" :value="value">{{value}}</option>
       </select>
     </div>
 
@@ -18,7 +20,7 @@ import { continents } from "../utils/datasets"
 
       <div class="regionContainer">
         <section v-for="(continent, index) in continents">
-          <input type="checkbox" class="btn-check" :id="`btn-check-${index}`" autocomplete="off">
+          <input type="checkbox" class="btn-check" :id="`btn-check-${index}`" v-model="properties.region" :value="continent"/>
           <label class="btn" :for="`btn-check-${index}`">{{ continent }}</label>
         </section>
       </div>
@@ -28,13 +30,13 @@ import { continents } from "../utils/datasets"
       <h3>Status</h3>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="properties.unmember">
         <label class="form-check-label" for="flexCheckDefault">
           Member of the United Nations
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input form-check-input-lg" type="checkbox" value="" id="flexCheckChecked" checked>
+        <input class="form-check-input form-check-input-lg" type="checkbox" id="flexCheckChecked" v-model="properties.independent">
         <label class="form-check-label" for="flexCheckChecked">
           Independent
         </label>

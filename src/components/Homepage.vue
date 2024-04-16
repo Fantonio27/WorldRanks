@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { reactive, computed} from "vue";
+    import { ref, computed} from "vue";
     import SearchTab from "./SearchTab.vue";
     import Sidebar from "./Sidebar.vue";
     import Table from "./Table.vue";
@@ -9,33 +9,36 @@
 
     const props = defineProps<{ data: Country[]}>();
 
-    let filterProperties = reactive<FilterProperties>({
+    let filterProperties = ref<FilterProperties>({
         page: 1,
-        sort: 'Population',
-        region: ['Oceania'],
-        status: {
+        sort: 'Name',
+        region: [],
+        status: 
+        {
             unmember: false,
-            independent: false,
-        },
-        search: 'Nauru'
+            independent: true,
+        }
+        ,
+        search: ''
     })
 
     const filteredData = computed(()=>{
-        return DataFiltered(filterProperties, props.data)
+        return DataFiltered(filterProperties.value, props.data)
     }) 
 
+    // watch(filterProperties.value, ()=>{console.log(filterProperties.value)})
 </script>
 
 <template>
     <main class="firstContainer">
-        <SearchTab />
+        <SearchTab v-model:search="filterProperties.search" :numberFound="props.data.length"/>
 
         <div class="boxContainer">
-            <Sidebar />
+            <Sidebar v-model:properties="filterProperties"/>
             <div class="tableContainer">
                 <template v-if="props.data.length != 0">
                     <Table :lists="filteredData" />
-                    <Pagination/>
+                    <Pagination :pageNo="filterProperties.page"/>
                 </template>
 
                 <h2 v-else>
