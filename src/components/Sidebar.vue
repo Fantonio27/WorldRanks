@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { continents, sortBy} from "../utils/datasets";
-import { defineModel} from "vue";
+import { defineModel } from "vue";
 
 defineModel('properties');
 
@@ -10,8 +10,9 @@ defineModel('properties');
   <div class="sidebar">
     <div>
       <h3>Sort by</h3>
+      
       <select class="form-select" aria-label="Default select example" v-model="properties.sort">
-        <option v-for="(value) in sortBy" :value="value">{{value}}</option>
+        <option v-for="(value) in sortBy" :value="value.id">{{value.name}}</option>
       </select>
     </div>
 
@@ -30,13 +31,13 @@ defineModel('properties');
       <h3>Status</h3>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="properties.unmember">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="properties.status.unmember">
         <label class="form-check-label" for="flexCheckDefault">
           Member of the United Nations
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input form-check-input-lg" type="checkbox" id="flexCheckChecked" v-model="properties.independent">
+        <input class="form-check-input form-check-input-lg" type="checkbox" id="flexCheckChecked" v-model="properties.status.independent">
         <label class="form-check-label" for="flexCheckChecked">
           Independent
         </label>

@@ -11,14 +11,13 @@
 
     let filterProperties = ref<FilterProperties>({
         page: 1,
-        sort: 'Name',
+        sort: 'population',
         region: [],
         status: 
         {
             unmember: false,
-            independent: true,
-        }
-        ,
+            independent: false,
+        },
         search: ''
     })
 
@@ -26,7 +25,23 @@
         return DataFiltered(filterProperties.value, props.data)
     }) 
 
-    // watch(filterProperties.value, ()=>{console.log(filterProperties.value)})
+    // watch(filterProperties.value.status, ()=>{
+    //     console.log("Hello")
+    // })
+
+    const changePageNo = (action: number, num?: number) => {
+        switch(action){
+            case 1:
+                filterProperties.value.page -= 1        //Previous
+                break;
+            case 2: 
+                filterProperties.value.page += 1        //Next
+                break; 
+            case 3: 
+                filterProperties.value.page = num || 1;
+                break;
+        }
+    }
 </script>
 
 <template>
@@ -38,7 +53,10 @@
             <div class="tableContainer">
                 <template v-if="props.data.length != 0">
                     <Table :lists="filteredData" />
-                    <Pagination :pageNo="filterProperties.page"/>
+                    <Pagination 
+                        :pageNo="filterProperties.page" 
+                        :length="props.data.length" 
+                        @onClick="changePageNo"/>
                 </template>
 
                 <h2 v-else>

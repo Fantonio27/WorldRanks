@@ -67,3 +67,6 @@ export type FilterProperties = {
     },
     search: string
 }
+
+export type SortBy = 'population' | 'area'
+

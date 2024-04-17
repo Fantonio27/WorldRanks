@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import Icon from "../assets/Search.svg"
-  import {defineModel, defineProps} from "vue"
+  import {defineModel} from "vue"
 
   const input = defineModel('search')
   defineProps<{numberFound: number}>()
