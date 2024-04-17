@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, computed} from "vue";
+    import { ref,  watch} from "vue";
     import SearchTab from "./SearchTab.vue";
     import Sidebar from "./Sidebar.vue";
     import Table from "./Table.vue";
@@ -21,13 +21,13 @@
         search: ''
     })
 
-    const filteredData = computed(()=>{
+    const filteredData = () => {
         return DataFiltered(filterProperties.value, props.data)
-    }) 
+    }
 
-    // watch(filterProperties.value.status, ()=>{
-    //     console.log("Hello")
-    // })
+    watch(filterProperties.value, ()=>{
+        console.log(filterProperties.value.page)
+    })
 
     const changePageNo = (action: number, num?: number) => {
         switch(action){
@@ -38,9 +38,9 @@
                 filterProperties.value.page += 1        //Next
                 break; 
             case 3: 
-                filterProperties.value.page = num || 1;
+                filterProperties.value.page = num || 1; //Choose Page
                 break;
-        }
+            }
     }
 </script>
 
@@ -51,17 +51,22 @@
         <div class="boxContainer">
             <Sidebar v-model:properties="filterProperties"/>
             <div class="tableContainer">
-                <template v-if="props.data.length != 0">
-                    <Table :lists="filteredData" />
+                <Table :lists="filteredData()" />
+                    <!-- <Pagination 
+                        :pageNo="filterProperties.page" 
+                        :length="props.data.length" 
+                        @onClick="changePageNo"/> -->
+                <!-- <template v-if="props.data.length != 0">
+                    <Table :lists="filteredData()" />
                     <Pagination 
                         :pageNo="filterProperties.page" 
                         :length="props.data.length" 
                         @onClick="changePageNo"/>
-                </template>
+                </template> -->
 
-                <h2 v-else>
+                <!-- <h2 v-else>
                     ...loading
-                </h2>
+                </h2> -->
             </div>
         </div>
     </main>

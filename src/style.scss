@@ -53,6 +53,7 @@ header{
     background-color: $black;
     border: 1px solid $lightBlack;
     border-radius: 15px;
+    min-height: calc(100vh - 300px);
 
     li, h3{
         font-size: 12px;
@@ -166,6 +167,7 @@ header{
 
         .tableContainer{
             width: 77%;
+            position: relative;
 
             table tr td, table tr th{
                 background-color: transparent !important;
@@ -202,6 +204,31 @@ header{
             .paginationContainer{
                 margin: auto;
                 width: max-content;
+            }
+        }
+
+        .suspenseContainer{
+            width: 100%;
+            position: absolute;
+            
+            > div{
+                background-color: $lightGray;
+                width: 100%;
+                height: 50px;
+                border-radius: 7px;
+                margin: 13px 0px;
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                50%{
+                    opacity: 0.5;
+                }
+
+                100%{
+                    opacity: 1;
+                }
+
             }
         }
     }

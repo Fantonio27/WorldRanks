@@ -22,7 +22,6 @@ export function DataFiltered (filterProperties: FilterProperties, props: Country
     const pages = FilterFunction(props, 0, page);
     const searchFilter = FilterFunction(pages, 1, search);
     const regionFilter = FilterFunction(searchFilter, 2, region);
-
     const statusFilter = FilterFunction(regionFilter, 3, stats);
     const sorting = FilterFunction(statusFilter, 4, sort); 
 
