@@ -3,7 +3,7 @@
     import SearchTab from "./SearchTab.vue";
     import Sidebar from "./Sidebar.vue";
     import Table from "./Table.vue";
-    import Pagination from "./Pagination.vue";
+    // import Pagination from "./Pagination.vue";
     import { Country, FilterProperties} from "../utils/type";
     import { DataFiltered } from "../utils/methods";
 
@@ -29,19 +29,7 @@
         console.log(filterProperties.value.page)
     })
 
-    const changePageNo = (action: number, num?: number) => {
-        switch(action){
-            case 1:
-                filterProperties.value.page -= 1        //Previous
-                break;
-            case 2: 
-                filterProperties.value.page += 1        //Next
-                break; 
-            case 3: 
-                filterProperties.value.page = num || 1; //Choose Page
-                break;
-            }
-    }
+ 
 </script>
 
 <template>
@@ -51,22 +39,7 @@
         <div class="boxContainer">
             <Sidebar v-model:properties="filterProperties"/>
             <div class="tableContainer">
-                <Table :lists="filteredData()" />
-                    <!-- <Pagination 
-                        :pageNo="filterProperties.page" 
-                        :length="props.data.length" 
-                        @onClick="changePageNo"/> -->
-                <!-- <template v-if="props.data.length != 0">
-                    <Table :lists="filteredData()" />
-                    <Pagination 
-                        :pageNo="filterProperties.page" 
-                        :length="props.data.length" 
-                        @onClick="changePageNo"/>
-                </template> -->
-
-                <!-- <h2 v-else>
-                    ...loading
-                </h2> -->
+                <Table :lists="filteredData()" :filter="filterProperties"/>
             </div>
         </div>
     </main>
