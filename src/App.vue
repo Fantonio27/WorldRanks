@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted, ref} from "vue";
-  import Homepage from "./components/Homepage.vue";
-  import CountryPage from "./components/CountryInfo.vue"
+  import Homepage from "./pages/Homepage.vue";
+  import CountryPage from "./pages/CountryInfo.vue"
   import { WorldLists } from "./utils/methods"
   import { Country } from "./utils/type"
   import Logo from "./assets/Logo.svg";

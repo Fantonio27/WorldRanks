@@ -1,6 +1,5 @@
 <script setup lang="ts">
-    defineProps(['data'])
-
+    // const props = defineProps(['data'])
 </script>
 
 <template>

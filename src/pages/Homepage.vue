@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import { ref} from "vue";
-    import SearchTab from "./SearchTab.vue";
-    import Sidebar from "./Sidebar.vue";
-    import Table from "./Table.vue";
+    import SearchTab from "../components/SearchTab.vue";
+    import Sidebar from "../components/Sidebar.vue";
+    import Table from "../components/Table.vue";
     import { Country, FilterProperties} from "../utils/type";
     import { DataFiltered } from "../utils/methods";
 

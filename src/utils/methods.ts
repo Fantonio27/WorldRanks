@@ -14,6 +14,15 @@ export function WorldLists (country: string | null, dataform: Country[]){
     return country != null?dataform.filter((val: Country)=> val.name.common == country) : dataform.slice(0,20) 
 } 
 
+export function Riderect (country: string){
+    window.location.href = `http://localhost:5173/?country=${country}`
+}
+
+export async function FetchData (country: string) {
+    const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders ,unMember`);
+    const data = await response.json()
+}
+
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
     const {page, sort, region, status, search} = filterProperties;
 
@@ -27,6 +36,7 @@ export function DataFiltered (filterProperties: FilterProperties, props: Country
 
     return sorting
 }
+
 function FilterFunction (props : Country[], key:number , value: string[] | string | number | boolean) {
     const newKey: number = (<string[] | string>value).length != 0? key : 5;
 
