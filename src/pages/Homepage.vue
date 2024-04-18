@@ -27,7 +27,6 @@
     // watch(filterProperties.value, ()=>{
     //     console.log(filterProperties.value.page)
     // })
-
  
 </script>
 

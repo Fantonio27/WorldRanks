@@ -1,26 +1,16 @@
 import { Country, FilterProperties, type SortBy} from "./type";
 
-export function GetAllParams () {
-    let obj = {}
-    let urlParams = new URLSearchParams(window.location.search);
-    for(let val of urlParams.keys()){
-        obj = {...obj, [val] : ["continent","status"].includes(val)? urlParams.getAll(val) : urlParams.get(val)}
-    }
 
-    return obj;
-};
-
-export function WorldLists (country: string | null, dataform: Country[]){
-    return country != null?dataform.filter((val: Country)=> val.name.common == country) : dataform.slice(0,20) 
-} 
 
 export function Riderect (country: string){
     window.location.href = `http://localhost:5173/?country=${country}`
 }
 
-export async function FetchData (country: string) {
+export async function FetchData (country: string | null) {
     const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders ,unMember`);
     const data = await response.json()
+
+    return data.slice(0,20)
 }
 
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
