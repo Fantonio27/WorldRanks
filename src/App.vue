@@ -7,13 +7,13 @@
   import Logo from "./assets/Logo.svg";
 
   let dataform = ref<Country[]>([])
-  let page = new URLSearchParams(window.location.search).get('country')
+  let params = new URLSearchParams(window.location.search).get('country')
 
   onMounted(async() => {
       const response = await fetch("https://restcountries.com/v3.1/all?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders ,unMember");
       const data = await response.json()
 
-      let filtered = WorldLists(page, data)
+      let filtered = WorldLists(params, data)
       setTimeout(()=> {dataform.value = filtered;}, 1000)
   })
 
@@ -23,7 +23,7 @@
   <header>
       <img :src="Logo" alt="logo">
   </header>
-  <component :is="!page? Homepage :  CountryPage" :data="dataform"/>
+  <component :is="!params? Homepage :  CountryPage" :data="dataform"/>
 </template>
 
 

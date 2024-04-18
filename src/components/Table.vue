@@ -34,7 +34,7 @@
       </thead>
       <tbody >
         <template v-if="lists.length != 0">
-          <tr v-for="(list, index) in lists" :key="index">
+          <tr v-for="(list, index) in lists" :key="index" class="rowBox">
             <th scope="row">
               <img :src="list.flags.svg" :alt="list.flags.alt" class="flag" />
             </th>

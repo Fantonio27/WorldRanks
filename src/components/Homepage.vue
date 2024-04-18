@@ -1,9 +1,8 @@
 <script setup lang="ts">
-    import { ref,  watch} from "vue";
+    import { ref} from "vue";
     import SearchTab from "./SearchTab.vue";
     import Sidebar from "./Sidebar.vue";
     import Table from "./Table.vue";
-    // import Pagination from "./Pagination.vue";
     import { Country, FilterProperties} from "../utils/type";
     import { DataFiltered } from "../utils/methods";
 
@@ -25,9 +24,9 @@
         return DataFiltered(filterProperties.value, props.data)
     }
 
-    watch(filterProperties.value, ()=>{
-        console.log(filterProperties.value.page)
-    })
+    // watch(filterProperties.value, ()=>{
+    //     console.log(filterProperties.value.page)
+    // })
 
  
 </script>

@@ -192,6 +192,12 @@ header{
                 color: $mediumGray;
             }
 
+            .rowBox:hover{
+                background-color: $lightGray;
+                transition: 0.3s ease-out;
+                cursor: pointer;
+            }
+
             .flag{
                 width: 52px;
                 height: 40px;
@@ -204,6 +210,11 @@ header{
             .paginationContainer{
                 margin: auto;
                 width: max-content;
+
+                .page-link{
+                    color: $blue;
+                }
+
             }
         }
 

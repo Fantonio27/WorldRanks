@@ -11,7 +11,7 @@ export function GetAllParams () {
 };
 
 export function WorldLists (country: string | null, dataform: Country[]){
-    return country != null?dataform.filter((val: Country)=> val.name.common == "Philippines") : dataform.slice(0,20) 
+    return country != null?dataform.filter((val: Country)=> val.name.common == country) : dataform.slice(0,20) 
 } 
 
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
