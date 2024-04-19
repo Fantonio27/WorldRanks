@@ -23,7 +23,7 @@ const changePageNo = (action: number, num?: number) => {
 </script>
 
 <template>
-  <div>
+  <div style="overflow-x:auto;">
     <table class="table table-dark table-borderless">
       <thead>
         <tr>
@@ -31,7 +31,7 @@ const changePageNo = (action: number, num?: number) => {
           <th scope="col">Name</th>
           <th scope="col">Population</th>
           <th scope="col">Area (km²)</th>
-          <th scope="col">Region</th>
+          <th scope="col" class="toggle-1">Region</th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +43,7 @@ const changePageNo = (action: number, num?: number) => {
             <td>{{ list.name.common }}</td>
             <td>{{ list.population }}</td>
             <td>{{ list.area }}</td>
-            <td>{{ list.region }}</td>
+            <td class="toggle-1">{{ list.region }}</td>
           </tr>
         </template>
 
