@@ -1,35 +1,38 @@
 <script setup lang="ts">
-import {ref} from "vue"
-const pageNumber = defineProps<{pageNo : number, length: number}>()
+const props = defineProps<{pageNo : number, length: number}>()
 
 defineEmits<{
   onClick: [action: number, num?: number]
 }>()
 
-let csac = ref([2,2,3])
+let numberofPage = Math.ceil(props.length / 10)
+// const cscsc = (n:number) =>{
+//   return pageNumber.pageNo > 3? n + (pageNumber.pageNo - 1) : n 
 
-const cscsc = () =>{
-  // return pageNumber.pageNo > 3 ? n + (pageNumber.pageNo - 1) : n 
-
-  return csac.value.map((number)=>{
-    return number * pageNumber.pageNo
-  })
+//   // return csac.value.map((number)=>{
+//   //   return number * pageNumber.pageNo
+//   // })
+// }1
+const pagination = () =>{
+  let length = numberofPage - 2;
+  const array = Array.from({length: 3}, (_, index)=> index + (length > props.pageNo?  0 : 1))
+  return array
 }
-
 </script>
 
 <template>
-  <!-- {{pageNo}} -->
   <div class="paginationContainer">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" @click="$emit('onClick', 1)">Previous</a></li>
-        <!-- <li v-for="n in 3" class="page-item">
-          <button :class="`page-link ${n == pageNumber.pageNo && 'active'}`"  @click="$emit('onClick', 3, pageNo(n))">{{pageNo(n)}}</button>
-        </li> -->
-         <li v-for="item in cscsc()" class="page-item">
+        <template v-if="numberofPage != 2">
+          <li v-for="n in pagination()" class="page-item" >
+            <button :class="`page-link ${(n+1) == props.pageNo && 'active'}`" @click="$emit('onClick', 3, n + 1)" >{{n+1}}</button>
+          </li>
+        </template>      
+         <!-- <li v-for="item in cscsc()" class="page-item">
           <button :class="`page-link ${item == pageNumber.pageNo && 'active'}`">{{item}}</button>
-        </li>
+        </li> -->
         <li class="page-item">
           <a class="page-link" @click="$emit('onClick', 2)">Next</a>
         </li>
@@ -37,3 +40,5 @@ const cscsc = () =>{
     </nav>
   </div>
 </template>
+
+// @click="$emit('onClick', 3, pageNo(n))"

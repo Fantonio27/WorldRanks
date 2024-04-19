@@ -4,20 +4,20 @@ import Pagination from "./Pagination.vue";
 import { Country, FilterProperties } from "../utils/type";
 import { Riderect } from "../utils/methods"
 
-const props = defineProps<{ lists: Country[], filter: FilterProperties }>();
+const props = defineProps<{ lists: Country[], filter: FilterProperties, length:number}>();
 
 const changePageNo = (action: number, num?: number) => {
-  switch (action) {
-    case 1:
-      props.filter.page -= 1        //Previous
-      break;
-    case 2:
-      props.filter.page += 1        //Next
-      break;
-    case 3:
-      props.filter.page = num || 1;  //Choose Page
-      break;
-  }
+    switch (action) {
+      case 1:
+        props.filter.page -= props.filter.page == 1? 0: 1        //Previous
+        break;
+      case 2:
+        props.filter.page += Math.ceil(props.length / 10) > props.filter.page? 1: 0        //Next
+        break;
+      case 3:
+        props.filter.page = num || 1;  //Choose Page
+        break;
+    }
 }
 
 </script>
@@ -53,8 +53,8 @@ const changePageNo = (action: number, num?: number) => {
       </tbody>
     </table>
 
-    <template v-if="lists.length > 1">
-      <Pagination :pageNo="filter.page" :length="lists.length" @onClick="changePageNo" />
+    <template v-if="props.length > 10">
+      <Pagination :pageNo="filter.page" :length="props.length" @onClick="changePageNo" />
     </template>
   </div>
 

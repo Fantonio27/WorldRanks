@@ -8,7 +8,7 @@ export async function FetchData (country: string | null) {
     const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders,unMember,cca3`);
     const data = await response.json()
 
-    return data.slice(0,20)
+    return data.slice(0,33)
 }
 
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
@@ -16,13 +16,14 @@ export function DataFiltered (filterProperties: FilterProperties, props: Country
 
     const stats = (!status.independent && !status.unmember) || (status.independent && status.unmember)? '': status.unmember
 
-    const pages = FilterFunction(props, 0, page);
-    const searchFilter = FilterFunction(pages, 1, search);
+ 
+    const searchFilter = FilterFunction(props, 1, search);
     const regionFilter = FilterFunction(searchFilter, 2, region);
     const statusFilter = FilterFunction(regionFilter, 3, stats);
     const sorting = FilterFunction(statusFilter, 4, sort); 
-
-    return sorting
+    const pages = FilterFunction(sorting, 0, page);
+    
+    return {data: pages, length: sorting.length}
 }
 
 function FilterFunction (props : Country[], key:number , value: string[] | string | number | boolean) {

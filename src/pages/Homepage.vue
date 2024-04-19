@@ -17,7 +17,7 @@
             unmember: false,
             independent: false,
         },
-        search: ''
+        search: '',
     })
 
     const filteredData = () => {
@@ -32,12 +32,12 @@
 
 <template>
     <main class="boxContainer-home">
-        <SearchTab v-model:search="filterProperties.search" :numberFound="props.data.length"/>
+        <SearchTab v-model:search="filterProperties.search" :numberFound="filteredData().length"/>
 
         <div class="boxContainer">
             <Sidebar v-model:properties="filterProperties"/>
             <div class="tableContainer">
-                <Table :lists="filteredData()" :filter="filterProperties"/>
+                <Table :lists="filteredData().data" :filter="filterProperties" :length="filteredData().length"/>
             </div>
         </div>
     </main>

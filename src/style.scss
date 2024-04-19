@@ -223,6 +223,15 @@ header{
 
                 .page-link{
                     color: $blue;
+                    cursor: pointer;
+
+                    &:hover{
+                        background-color: rgb(240, 240, 240);
+                    }
+                }
+
+                .active{
+                    color: white;
                 }
 
             }
@@ -241,6 +250,11 @@ header{
                 animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             }
 
+            h2{
+                text-align: center;
+                color: $mediumGray;
+            }
+
             @keyframes pulse {
                 0%, 100% {
                   opacity: 1;
@@ -256,8 +270,7 @@ header{
             .sidebar, .tableContainer{
                 width: 100%;
             }
-        }
-        
+        } 
     }
 
     .toggle-1{

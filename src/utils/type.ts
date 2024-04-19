@@ -65,7 +65,7 @@ export type FilterProperties = {
         unmember: boolean,
         independent: boolean,
     },
-    search: string
+    search: string,
 }
 
 export type SortBy = 'population' | 'area'
