@@ -31,7 +31,7 @@
 </script>
 
 <template>
-    <main class="firstContainer">
+    <main class="boxContainer-home">
         <SearchTab v-model:search="filterProperties.search" :numberFound="props.data.length"/>
 
         <div class="boxContainer">

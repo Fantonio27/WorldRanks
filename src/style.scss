@@ -16,6 +16,17 @@ $lightGray: #292b31;
     gap: $gap;
 }
 
+@mixin boxContainer($width, $height){
+    width: $width;
+    margin: auto;
+    bottom:60px;
+    position: relative;
+    background-color: $black;
+    border: 1px solid $lightBlack;
+    border-radius: 15px;
+    min-height: calc(100vh - $height);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -44,16 +55,9 @@ header{
     align-items: center;
 }
 
-.firstContainer{
-    width: 95%;
-    margin: auto;
+.boxContainer-home{
+    @include boxContainer(95%, 300px);
     padding: 30px;
-    bottom:60px;
-    position: relative;
-    background-color: $black;
-    border: 1px solid $lightBlack;
-    border-radius: 15px;
-    min-height: calc(100vh - 300px);
 
     li, h3{
         font-size: 12px;
@@ -240,5 +244,118 @@ header{
                 }
               }
         }
+    }
+}
+
+.boxContainer-country {
+    @include boxContainer(720px, 200px);
+
+    h2, p{
+        color: $mediumGray;
+        margin: 0px;
+    }
+
+    span{
+        color: $gray;
+        font-weight: 500;
+    }
+
+    .flag{
+        width: 260px;
+        height: 190px;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+        position: relative;
+        bottom: 45px;
+    }
+
+    .title-container{
+        text-align: center;
+        position: relative;
+        bottom: 20px;
+    }
+
+    .second-container{
+        @include flex(40px, center);
+        margin: 20px 0px 40px;
+
+        div{
+            @include flex(0, space-between);
+            background-color: $lightGray;
+            border-radius: 10px;
+            font-size: 14px;
+            padding: 10px;
+
+            p{
+                padding: 5px 20px;
+                
+                &:first-child{
+                    border-right: 1px solid $black;
+                }
+            }
+        }
+    }
+
+    .row-container{
+        >section{
+            @include flex(0px, space-between, center);
+            padding: 20px;
+            border: 0px;
+            border-top: 1px solid $lightBlack;
+            font-size: 14px;
+
+            div{
+                width: 100%;
+                .neighboar-grid{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, 100px);
+                    gap: 0.9rem;
+                    padding: 20px 0px 50px;
+
+                    section{
+                        img{
+                            border-radius: 5px;
+                            width: 100px;
+                            height: 60px;
+                            object-fit: contain;
+                            background-color: $lightGray;
+                            cursor: pointer;
+                        }
+    
+                        p{
+                            text-align: center;
+                            margin-top: 7px;
+                            cursor: pointer;
+                            transition: 0.3s;
+
+                            &:hover{
+                                color: $blue;
+                            }
+                        }
+                    }
+                  
+                }
+            }
+            
+        }
+    }
+}
+
+.loading-page{
+    margin-top: 150px;
+    img{
+        border: 1px solid #c8e5f1;
+        background-color: #c8e5f1;
+        border-radius: 50%;
+        display: block;
+        margin: auto;
+    }
+
+    p{
+        color: $mediumGray;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 10px;
     }
 }

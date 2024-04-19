@@ -1,13 +1,11 @@
 import { Country, FilterProperties, type SortBy} from "./type";
 
-
-
 export function Riderect (country: string){
     window.location.href = `http://localhost:5173/?country=${country}`
 }
 
 export async function FetchData (country: string | null) {
-    const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders ,unMember`);
+    const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders,unMember,cca3`);
     const data = await response.json()
 
     return data.slice(0,20)
