@@ -8,7 +8,7 @@ export async function FetchData (country: string | null) {
     const response = await fetch(`https://restcountries.com/v3.1/${country? `name/${country}` :'all'}?fields=flags,name,population,area,region,capital,subregion,languages,currencies,continents,borders,unMember,cca3`);
     const data = await response.json()
 
-    return data.slice(0,33)
+    return data
 }
 
 export function DataFiltered (filterProperties: FilterProperties, props: Country[]) {   
