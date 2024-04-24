@@ -20,6 +20,13 @@ const changePageNo = (action: number, num?: number) => {
     }
 }
 
+// const pagination = () => {
+//   let end = Number(props.filter.page) * 10;
+//   let start = end - 10;
+           
+//   return props.lists.slice(start, end)
+// }
+
 </script>
 
 <template>
