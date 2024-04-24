@@ -1,6 +1,6 @@
 
 
-export const continents: string[] = ['Americas','Antartica','Africa','Asia', 'Europe', 'Ocenia'];
+export const continents: string[] = ['Americas','Antartica','Africa','Asia', 'Europe', 'Oceania'];
 
 export const sortBy: {id: string, name:string}[] = [
     {id:'name',name: 'Name'},
